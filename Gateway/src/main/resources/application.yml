@@ -1,0 +1,42 @@
+spring:
+  main:
+    web-application-type: reactive
+  cloud:
+   gateway:
+     globalcors:
+       corsConfigurations:
+         '[/**]':
+           allowedOrigins: "http://localhost:3000"
+           allowedHeaders: "*"
+           allowedMethods: "*"
+           allowCredentials: true
+     routes:
+       - id: products-service
+         uri: lb://PRODUCTS
+         predicates:
+           - Path=/products/**
+         filters:
+           - AuthenticationFilter
+
+
+       - id: orders-service
+         uri: lb://ORDERS
+         predicates:
+           - Path=/orders/**
+         filters:
+           - AuthenticationFilter
+
+       - id: identity-service
+         uri: lb://IDENTITY-SERVICE
+         predicates:
+           - Path=/auth/**
+
+  application:
+   name: SWIGGY-GATEWAY
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
