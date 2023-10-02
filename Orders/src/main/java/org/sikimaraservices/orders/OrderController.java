@@ -1,4 +1,4 @@
-package org.sikimaraservices;
+package org.sikimaraservices.orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,8 +11,15 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping
-    public Orders createOrder(@RequestBody Orders order) {
-        return orderService.createOrder(order);
+    public String createOrder(@RequestBody Orders order) {
+        Orders order1;
+        if(orderService.createOrder(order)==null){
+            throw new RuntimeException("Not enough quantity");
+        }
+        else{
+            return "Order created";
+
+        }
     }
     @GetMapping("/test")
     public String test(){

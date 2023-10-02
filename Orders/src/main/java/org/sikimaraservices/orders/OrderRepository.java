@@ -1,4 +1,4 @@
-package org.sikimaraservices;
+package org.sikimaraservices.orders;
 
 import feign.Param;
 import org.springframework.data.jpa.repository.JpaRepository;

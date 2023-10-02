@@ -1,4 +1,4 @@
-package org.sikimaraservices.users;
+package org.sikimaraservices.clients.users;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.cloud.openfeign.FeignClient;

@@ -41,13 +41,16 @@ public class ProductController {
                 null
         );
     }
-    @GetMapping("/getQuanity/{id}")
-    public Integer getQuantityProduct(@RequestParam int id){
-        return productRepository.findById(id).get().getQuantity();
+    @GetMapping("/getQuantity/{id}")
+    public Integer getQuantityProduct(@PathVariable("id") Integer id){
+        if(productRepository.findById(id).isEmpty())
+            return 0;
+        else return productRepository.findById(id).get().getQuantity();
+
 
     }
-    @PutMapping("/updateQuantity/{id}")
-    public String updateQuantityProduct(@RequestParam int id, @RequestParam int quantity){
+    @PostMapping("/updateQuantity/{id}/quantity/{quantity}")
+    public String updateQuantityProduct(@PathVariable("id") int id, @PathVariable("quantity") int quantity){
         Products products = productRepository.findById(id).get();
         products.setQuantity(quantity);
         productRepository.save(products);

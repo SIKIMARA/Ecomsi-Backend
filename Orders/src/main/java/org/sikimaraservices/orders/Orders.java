@@ -1,4 +1,4 @@
-package org.sikimaraservices;
+package org.sikimaraservices.orders;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ public class Orders {
     private Long id;
 
     private Date orderDate;
-    private Long UserId;
+    private int UserId;
     private String FullName;
     private String Email;
     private String Address;

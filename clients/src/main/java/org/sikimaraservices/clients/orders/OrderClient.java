@@ -1,4 +1,4 @@
-package org.sikimaraservices.orders;
+package org.sikimaraservices.clients.orders;
 
 import org.springframework.cloud.openfeign.FeignClient;
 

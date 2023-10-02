@@ -1,5 +1,5 @@
-package org.sikimaraservices;
-import org.sikimaraservices.products.ProductClient;
+package org.sikimaraservices.orders;
+import org.sikimaraservices.clients.products.ProductClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,13 +11,15 @@ public class OrderService {
     private OrderRepository orderRepository;
     @Autowired
     private ProductClient productClient;
-
     public Orders createOrder(Orders order) {
-        // Add any business logic or validation before saving the order
+
+
         if(order.getOrderItems() != null){
             order.getOrderItems().forEach(orderItem -> {
                 orderItem.setOrder(order);
-                if(orderItem.getQuantity()<productClient.getQuantityProduct(orderItem.getIdProduct())){
+                System.out.println(orderItem.getQuantity());
+                System.out.println(productClient.getQuantityProduct(orderItem.getIdProduct()));
+                if(orderItem.getQuantity()<=productClient.getQuantityProduct(orderItem.getIdProduct())){
                     productClient.updateQuantityProduct(orderItem.getIdProduct(),productClient.getQuantityProduct(orderItem.getIdProduct())-orderItem.getQuantity());
                 }
                 else{
