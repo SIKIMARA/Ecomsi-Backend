@@ -13,6 +13,8 @@
         <module>Orders</module>
         <module>clients</module>
         <module>identity-service</module>
+        <module>amqp</module>
+        <module>Eureka_server</module>
         <module>Gateway</module>
         <module>Notification</module>
     </modules>
@@ -106,10 +108,7 @@
             </plugins>
         </pluginManagement>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

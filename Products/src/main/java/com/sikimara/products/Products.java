@@ -1,13 +1,13 @@
 package com.sikimara.products;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.sikimara.products.Reviews.Reviews;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -28,5 +28,7 @@ public class Products {
     private String color;
     private String brand;
     private String category;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<Reviews> reviews;
 
 }

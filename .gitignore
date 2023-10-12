@@ -12,6 +12,8 @@ target/
 *.iml
 *.ipr
 
+private_key
+terraform.tfvars
 mysql-data
 
 ### Eclipse ###
