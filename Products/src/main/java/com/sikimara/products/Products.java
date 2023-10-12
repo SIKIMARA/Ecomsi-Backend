@@ -1,5 +1,8 @@
 package com.sikimara.products;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sikimara.products.Reviews.Reviews;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -29,6 +32,7 @@ public class Products {
     private String brand;
     private String category;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Reviews> reviews;
 
 }

@@ -1,8 +1,10 @@
 package com.sikimara.products.Reviews;
 
+import com.sikimara.products.Products;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReviewsService {
@@ -18,7 +20,7 @@ public class ReviewsService {
         return reviewsRepository.findAll();
     }
     public List<Reviews> getReviewsByProductId(int id){
-        return reviewsRepository.findByProductId(id);
+        return reviewsRepository.findReviewsByProductId(id);
     }
     public Reviews getReviewById(int id){
         return reviewsRepository.findById(id).orElse(null);
