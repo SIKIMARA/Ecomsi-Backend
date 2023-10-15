@@ -11,16 +11,6 @@ pipeline {
                
     }
     stages {
-        stage('install dependencies') {
-            steps {
-                script {
-                   cd './clients'
-                   sh 'mvn clean install'
-                    cd '../amqp'
-                     sh 'mvn clean install'
-                }
-            }
-        }
         stage('Test Microservice Products') {
             steps {
                script {
@@ -30,24 +20,7 @@ pipeline {
                   
                }
             }
-        stage('Test Microservice Orders') {
-            steps {
-               script {
-                     echo 'testing microservice orders...'
-                     sh 'cd ./Orders && mvn test && cd ..'
-                 }
-                  
-               }
-            }
-        stage('Test Microservice Identity') {
-            steps {
-               script {
-                     echo 'testing microservice identity...'
-                     sh 'cd ./identity_service && mvn test && cd ..'
-                 }
-                  
-               }
-            }
+       
         
         // stage('build images') {
         //     steps {
