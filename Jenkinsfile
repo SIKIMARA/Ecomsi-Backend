@@ -32,7 +32,7 @@ pipeline {
         stage('Test Microservice Orders') {
             steps {
                script {
-                    sleep(secs: 5, unit: 'SECONDS')
+                    sleep 5
                      
                  }
                   
@@ -41,7 +41,7 @@ pipeline {
         stage('Test Microservice Identity') {
             steps {
                script {
-                      sleep(secs: 4, unit: 'SECONDS')
+                      sleep 4
                  }
                   
                }
