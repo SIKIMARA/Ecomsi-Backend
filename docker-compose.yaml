@@ -1,22 +1,22 @@
 version: '3.8'
 
 services:
-#  frontend:
-#    image: bougarrani/ecomsi:1.0-SNAPSHOT
-#    container_name: frontend
-#    ports:
-#      - "3000:3000"
-#    networks:
-#      - spring
-#      - mynetwork
-#    depends_on:
-#      - zipkin
-#      - eureka-server
-#      - database
-#      - rabbitmq
-#      - users
-#      - products
-#      - orders
+  frontend:
+    image: bougarrani/ecomsi-frontend:5.0-SNAPSHOT
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - spring
+      - mynetwork
+    depends_on:
+      - zipkin
+      - eureka-server
+      - database
+      - rabbitmq
+      - users
+      - products
+      - orders
   database:
     image: mysql:5.7
     container_name: mysql-database
@@ -28,90 +28,90 @@ services:
       - "3306:3306"
     networks:
       - mynetwork
-#  eureka-server:
-#    image: bougarrani/ecomsi-eureka_server:0.0.1-SNAPSHOT
-#    container_name: eureka-server
-#    ports:
-#      - "8761:8761"
-#    environment:
-#      - MANAGEMENT.ZIPKIN.TRACING.ENDPOINT=http://zipkin:9411/api/v2/spans
-#    networks:
-#      - spring
-#      - mynetwork
-#    depends_on:
-#      - zipkin
-#  users:
-#    image: bougarrani/ecomsi-identity-service:1.0-SNAPSHOT
-#    container_name: users
-#    ports:
-#      - "9898:9898"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - mynetwork
-#    depends_on:
-#      - zipkin
-#      - eureka-server
-#      - database
-#  products:
-#    image: bougarrani/ecomsi-products:0.0.1-SNAPSHOT
-#    container_name: products
-#    ports:
-#      - "8082:8082"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - mynetwork
-#    depends_on:
-#      - zipkin
-#      - eureka-server
-#      - database
-#  orders:
-#    image: bougarrani/ecomsi-orders:0.0.1-SNAPSHOT
-#    container_name: orders
-#    ports:
-#      - "8081:8081"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - mynetwork
-#    depends_on:
-#      - zipkin
-#      - eureka-server
-#      - database
-#      - rabbitmq
-#  notification:
-#    image: bougarrani/ecomsi-notification:0.0.1-SNAPSHOT
-#    container_name: notification
-#    ports:
-#      - "8083:8083"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - mynetwork
-#    depends_on:
-#      - zipkin
-#      - eureka-server
-#      - database
-#      - rabbitmq
-#  gateway:
-#    image: bougarrani/ecomsi-gateway:0.0.1-SNAPSHOT
-#    container_name: gateway
-#    ports:
-#      - "8080:8080"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - mynetwork
-#    depends_on:
-#      - zipkin
-#      - eureka-server
-#      - database
+  eureka-server:
+    image: bougarrani/ecomsi-eureka_server:2.0-SNAPSHOT
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    environment:
+      - MANAGEMENT.ZIPKIN.TRACING.ENDPOINT=http://zipkin:9411/api/v2/spans
+    networks:
+      - spring
+      - mynetwork
+    depends_on:
+      - zipkin
+  users:
+    image: bougarrani/ecomsi-identity-service:2.0-SNAPSHOT
+    container_name: users
+    ports:
+      - "9898:9898"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - mynetwork
+    depends_on:
+      - zipkin
+      - eureka-server
+      - database
+  products:
+    image: bougarrani/ecomsi-products:2.0-SNAPSHOT
+    container_name: products
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - mynetwork
+    depends_on:
+      - zipkin
+      - eureka-server
+      - database
+  orders:
+    image: bougarrani/ecomsi-orders:2.0-SNAPSHOT
+    container_name: orders
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - mynetwork
+    depends_on:
+      - zipkin
+      - eureka-server
+      - database
+      - rabbitmq
+  notification:
+    image: bougarrani/ecomsi-notification:2.0-SNAPSHOT
+    container_name: notification
+    ports:
+      - "8083:8083"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - mynetwork
+    depends_on:
+      - zipkin
+      - eureka-server
+      - database
+      - rabbitmq
+  gateway:
+    image: bougarrani/ecomsi-gateway:2.0-SNAPSHOT
+    container_name: gateway
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - mynetwork
+    depends_on:
+      - zipkin
+      - eureka-server
+      - database
 
   zipkin:
     image: openzipkin/zipkin

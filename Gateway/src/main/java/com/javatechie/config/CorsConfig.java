@@ -16,7 +16,11 @@ public class CorsConfig
     {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials( true );
-        config.setAllowedOrigins( List.of( "http://localhost:3000","http://ec2-15-237-179-131.eu-west-3.compute.amazonaws.com:3000" ) );
+        config.setAllowedOrigins( List.of( "http://localhost:3000",
+                "http://ec2-15-237-179-131.eu-west-3.compute.amazonaws.com:3000",
+                "http://ec2-15-236-239-30.eu-west-3.compute.amazonaws.com:3000",
+                "http://a5b394e7adf534ead841f51a8558766a-802380742.eu-west-3.elb.amazonaws.com",
+                "http://www.ecomsi.store") );
         config.setAllowedMethods( List.of( "GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD" ) );
         config.setAllowedHeaders( List.of( "origin", "content-type", "accept", "authorization", "cookie" ) );
 

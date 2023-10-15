@@ -42,6 +42,10 @@ public class AuthController {
             throw new RuntimeException("invalid access");
         }
     }
+   @GetMapping("/all")
+    public Iterable<UserCredential> getAllUsers(){
+        return repository.findAll();
+    }
 
     @GetMapping("/validate")
     public String validateToken(@RequestParam String token) {

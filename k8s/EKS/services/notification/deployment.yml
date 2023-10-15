@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification
+  labels:
+    app: notification
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: notification
+      labels:
+        app: notification
+    spec:
+      containers:
+        - name: notification
+          image: bougarrani/ecomsi-notification:3.0-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8083
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: kube
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql:3306/notification
+
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: notification

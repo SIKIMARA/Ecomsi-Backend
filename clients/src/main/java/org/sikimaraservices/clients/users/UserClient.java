@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(
-        name="users"
+        name="users",
+        url="${clients.users.url}"
 
 )
 @Component

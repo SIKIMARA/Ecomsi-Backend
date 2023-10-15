@@ -19,6 +19,7 @@
         <option value="$PROJECT_DIR$/Client/pom.xml" />
         <option value="$PROJECT_DIR$/Order/pom.xml" />
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/k8s/pom.xml" />
       </set>
     </option>
   </component>

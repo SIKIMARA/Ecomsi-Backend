@@ -12,7 +12,6 @@ spring:
           starttls:
             enable: true
 
-
   application:
     name: notification
   datasource:
@@ -26,6 +25,8 @@ spring:
     show-sql: true
   rabbitmq:
     addresses: localhost:5672
+  profiles:
+    active: default
 
 eureka:
   client:

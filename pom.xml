@@ -17,6 +17,7 @@
         <module>Eureka_server</module>
         <module>Gateway</module>
         <module>Notification</module>
+        <module>k8s</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

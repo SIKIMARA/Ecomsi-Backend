@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users
+  labels:
+    app: users
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: users
+      labels:
+        app: users
+    spec:
+      containers:
+        - name: users
+          image: bougarrani/ecomsi-identity-service:3.0-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9898
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: kube
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql:3306/users
+
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: users

@@ -71,6 +71,19 @@ resource "aws_instance" "myapp_instance" {
   }
 
 }
+resource "aws_instance" "myapp_instance2" {
+  ami           = data.aws_ami.latest-amazon-linux-image.id
+  instance_type = "t2.large"
+  subnet_id     = aws_subnet.dev-subnet-1.id
+  key_name      = aws_key_pair.name.key_name
+  associate_public_ip_address = true
+
+
+  tags = {
+    Name = "${var.env_prefix}-instance2"
+  }
+
+}
 
 
 resource "aws_network_interface" "new_eni" {

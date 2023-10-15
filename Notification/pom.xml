@@ -61,7 +61,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <name>bougarrani/ecomsi-notification:${project.version}</name>
+                        <name>bougarrani/ecomsi-notification:3.0-SNAPSHOT</name>
                     </image>
                     <pullPolicy>
                         IF_NOT_PRESENT

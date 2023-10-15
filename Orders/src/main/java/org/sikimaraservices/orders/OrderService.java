@@ -5,6 +5,7 @@ import org.sikimaraservices.clients.products.ProductClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,6 +16,29 @@ public class OrderService {
     private ProductClient productClient;
     @Autowired
     private RabbitMQMessageProducer rabbitMQMessageProducer;
+
+    public List<OrderDTO> getAllOrders() {
+        List<OrderDTO> orders = new ArrayList<>();
+        orderRepository.findAll().forEach(order -> {
+            orders.add(OrderDTO.builder()
+                    .id(order.getId())
+                    .orderDate(order.getOrderDate())
+                    .UserId(order.getUserId())
+                    .FullName(order.getFullName())
+                    .Email(order.getEmail())
+                    .Address(order.getAddress())
+                    .City(order.getCity())
+                    .Country(order.getCountry())
+                    .Phone(order.getPhone())
+                    .PostalCode(order.getPostalCode())
+                    .build());
+        });
+        return orders;
+
+    }
+    public List<OrderItem> getOrderItemsByOrderId(Long orderId) {
+        return orderRepository.findById(orderId).get().getOrderItems();
+    }
     public Orders createOrder(Orders order) {
 
 

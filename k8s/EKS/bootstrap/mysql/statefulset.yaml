@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: StatefulSet
+# stateful metadata
+metadata:
+  name: mysql
+  # labels for the statefulset itself
+  labels:
+    app: mysql
+# stateful spec (replicaset) (servicename,replicas,selector,template)
+spec:
+  # replicas is the number of podskubect
+  serviceName: mysql
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  # template is the pod template
+  template:
+    metadata:
+      name: mysql
+      labels:
+        app: mysql
+    #spec is the pod spec (containers,volumes)
+    spec:
+      volumes:
+        - name: mysql
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
+      containers:
+        - name: mysql
+          image: mysql:5.7
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "root"
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "1500m"
+      restartPolicy: Always

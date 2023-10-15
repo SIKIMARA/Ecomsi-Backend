@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orders
+  labels:
+    app: orders
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: orders
+      labels:
+        app: orders
+    spec:
+      containers:
+        - name: orders
+          image: bougarrani/ecomsi-orders:3.0-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8081
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: kube
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql:3306/orders
+
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: orders

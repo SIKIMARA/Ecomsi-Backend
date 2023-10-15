@@ -42,7 +42,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>bougarrani/ecomsi-products:${project.version}</name>
+						<name>bougarrani/ecomsi-products:3.0-SNAPSHOT</name>
 					</image>
 					<pullPolicy>
 						IF_NOT_PRESENT

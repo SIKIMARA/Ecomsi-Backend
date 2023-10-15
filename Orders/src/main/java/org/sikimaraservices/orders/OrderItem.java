@@ -1,5 +1,6 @@
 package org.sikimaraservices.orders;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class OrderItem {
     private int totalPrice;
 
     @ManyToOne
+    @JsonIgnore
     private Orders order;
 
     // Getters and setters

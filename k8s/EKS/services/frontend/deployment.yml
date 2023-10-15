@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: frontend
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: bougarrani/ecomsi-fronend:6.0-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: REACT_APP_API_HOST
+              value: a3cdd0e7666724280b086c44ed2bdf04-868361143.eu-west-3.elb.amazonaws.com:8080
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: frontend

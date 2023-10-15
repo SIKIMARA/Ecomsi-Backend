@@ -36,5 +36,10 @@ public class OrderController {
         return orderService.getOrdersByUserId(userId);
     }
 
+    @GetMapping("/all")
+    public List<OrderDTO> getAllOrders() {
+        return orderService.getAllOrders();
+    }
+
     // Add more endpoints for updating and deleting orders as needed
 }

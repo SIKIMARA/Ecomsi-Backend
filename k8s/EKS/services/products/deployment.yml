@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: products
+  labels:
+    app: products
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: products
+      labels:
+        app: products
+    spec:
+      containers:
+        - name: products
+          image: bougarrani/ecomsi-products:3.0-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8082
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: kube
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql:3306/products
+
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: products

@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: IDENTITY-SERVICE
+  datasource:
+    url: jdbc:mysql://database:3306/users
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://eureka-server:8761/eureka/
+    enabled: false
+
+management:
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
+
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+  level:
+    org.springframework.web.cors: DEBUG
+
+server:
+  port: 9898
+

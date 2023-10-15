@@ -1,0 +1,61 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: driss.shi.shi@gmail.com
+    password: xgaq jnty xudr iawg
+
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+  application:
+    name: notification
+  datasource:
+    url: jdbc:mysql://database:3306/notification
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  rabbitmq:
+    addresses: rabbitmq:5672
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://eureka-server:8761/eureka/
+    enabled: false
+
+management:
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
+
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+  level:
+    org.springframework.web.cors: DEBUG
+
+server:
+  port: 8083
+
+
+rabbitmq:
+  exchanges:
+    internal: internal.exchange
+  queues:
+    notification: notification.queue
+  routing-keys:
+    internal-notification: internal.notification.routing-key
