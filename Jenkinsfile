@@ -2,7 +2,7 @@
 pipeline {
     agent any
     tools {
-        maven 'myMaven'
+        
     }
     environment {
         registry = "bougarrani/demo-app:1.0"
