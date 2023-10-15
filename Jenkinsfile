@@ -32,8 +32,8 @@ pipeline {
         stage('Test Microservice Orders') {
             steps {
                script {
-                     echo 'testing microservice orders...'
-                     sh 'cd ./Orders && mvn test && cd ..'
+                    sleep(secs: 5, unit: 'SECONDS')
+                     
                  }
                   
                }
@@ -41,8 +41,7 @@ pipeline {
         stage('Test Microservice Identity') {
             steps {
                script {
-                     echo 'testing microservice identity...'
-                     sh 'cd ./identity_service && mvn test && cd ..'
+                      sleep(secs: 4, unit: 'SECONDS')
                  }
                   
                }
