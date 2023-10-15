@@ -1,9 +1,6 @@
 #!/usr/bin/env groovy
 pipeline {
     agent any
-    tools {
-        
-    }
     environment {
         registry = "bougarrani/demo-app:1.0"
                
