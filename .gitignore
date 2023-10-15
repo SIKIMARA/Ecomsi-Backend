@@ -12,6 +12,9 @@ target/
 *.iml
 *.ipr
 
+.terraform/
+
+
 private_key
 terraform.tfvars
 mysql-data
