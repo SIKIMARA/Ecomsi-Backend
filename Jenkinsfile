@@ -14,8 +14,10 @@ pipeline {
         stage('install dependencies') {
             steps {
                 script {
-                    echo 'installing dependencies...'
-                    sh 'mvn clean install'
+                   cd './clients'
+                   sh 'mvn clean install'
+                    cd '../amqp'
+                     sh 'mvn clean install'
                 }
             }
         }
