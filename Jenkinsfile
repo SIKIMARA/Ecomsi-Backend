@@ -11,6 +11,14 @@ pipeline {
                
     }
     stages {
+        stage('install dependencies') {
+            steps {
+                script {
+                    echo 'installing dependencies...'
+                    sh 'mvn clean install'
+                }
+            }
+        }
         stage('Test Microservice Products') {
             steps {
                script {
