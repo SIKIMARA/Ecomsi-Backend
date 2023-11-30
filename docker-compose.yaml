@@ -2,13 +2,15 @@ version: '3.8'
 
 services:
   frontend:
-    image: bougarrani/ecomsi-frontend:5.0-SNAPSHOT
+    image: bougarrani/ecomsi-frontend:7.0-SNAPSHOT
     container_name: frontend
     ports:
       - "3000:3000"
     networks:
       - spring
       - mynetwork
+    environment:
+        - REACT_APP_API_HOST=localhost:8080
     depends_on:
       - zipkin
       - eureka-server
