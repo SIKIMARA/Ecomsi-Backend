@@ -2,6 +2,11 @@
 pipeline {
     agent any
     tools {
+<<<<<<< HEAD
+=======
+        maven 'myMaven'
+        jdk 'jdk'
+>>>>>>> Test
         
     }
     environment {
@@ -9,15 +14,50 @@ pipeline {
                
     }
     stages {
+<<<<<<< HEAD
         stage('Test Products Microservice') {
             steps {
                script {
                      echo 'testing products microservice...'
                      sh 'cd ./Products && mvn test && cd ..'
+=======
+        stage('install dependencies') {
+            steps {
+                script {
+                   sh 'cd ./clients && mvn install && cd ..'
+                   sh 'cd ./amqp && mvn install && cd ..'
+                    
+                }
+            }
+        }
+        stage('Test Microservice Products') {
+            steps {
+               script {
+                     echo 'testing microservice products...'
+                     sh 'cd ./Products && mvn test && cd ..'
                  }
                   
                }
             }
+        stage('Test Microservice Orders') {
+            steps {
+               script {
+                    sleep 5
+                     
+                 }
+                  
+               }
+            }
+        stage('Test Microservice Identity') {
+            steps {
+               script {
+                      sleep 4
+>>>>>>> Test
+                 }
+                  
+               }
+            }
+<<<<<<< HEAD
         stage('Test Orders Microservice') {
             steps {
                script {
@@ -50,6 +90,21 @@ pipeline {
         //             sh 'cd ./Products && mvn spring-boot:build-image && cd ..'
         //             sh 'cd ./Ordes && mvn spring-boot:build-image && cd ..'
 
+=======
+        
+        // stage('build images') {
+        //     steps {
+        //         script {
+        //             echo 'building docker images...'
+        //             // building images using spring-boot-maven-plugin of microservices 
+        //             sh 'cd ./Eureka_server && mvn spring-boot:build-image && cd ..'
+        //             sh 'cd ./Notification && mvn spring-boot:build-image && cd ..'
+        //             sh 'cd ./Gateway && mvn spring-boot:build-image && cd ..'
+        //             sh 'cd ./identity_service && mvn spring-boot:build-image && cd ..'
+        //             sh 'cd ./Products && mvn spring-boot:build-image && cd ..'
+        //             sh 'cd ./Ordes && mvn spring-boot:build-image && cd ..'
+
+>>>>>>> Test
         //             }
                     
                   

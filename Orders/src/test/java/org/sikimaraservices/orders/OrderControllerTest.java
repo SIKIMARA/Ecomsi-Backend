@@ -46,7 +46,8 @@ class OrderControllerTest {
         orders.setFullName("Dr Jane Doe");
         orders.setId(1L);
         orders.setOrderDate(Date.from(LocalDate.of(1970, 1, 1).atStartOfDay().atZone(ZoneOffset.UTC).toInstant()));
-        orders.setOrderItems(new ArrayList<>());
+        orders.setOrderItems(new ArrayList<>(
+                java.util.List.of(new OrderItem(1L, 1, "product 1", 1,  1, new Orders()))));
         orders.setPhone("6625550144");
         orders.setPostalCode("Postal Code");
         orders.setUserId(1);
